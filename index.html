@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Bitcoin Private Key Challenge</title>
+    <!-- bsv cdn unpkg -->
+    <script src="https://unpkg.com/bsv@1.5"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+      }
+      header {
+        background: #35424a;
+        color: #ffffff;
+        padding-top: 30px;
+        min-height: 70px;
+        border-bottom: #e8491d 3px solid;
+      }
+      header a {
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+      header ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        overflow: hidden;
+      }
+      header li {
+        float: left;
+        display: inline;
+        padding: 0 20px 0 20px;
+      }
+      header #branding {
+        float: left;
+      }
+      header #branding h1 {
+        margin: 0;
+      }
+      header nav {
+        float: right;
+        margin-top: 10px;
+      }
+      header .highlight,
+      header .current a {
+        color: #e8491d;
+        font-weight: bold;
+      }
+      header a:hover {
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      #playBtn {
+        width: 50%;
+        height: 50px;
+        font-size: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+      #result {
+        width: 50%;
+        font-size: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+      input {
+        width: 50%;
+        height: 50px;
+        font-size: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+      button {
+        width: 50%;
+        height: 50px;
+        font-size: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+      p {
+        font-size: 20px;
+      }
+
+      @media (max-width: 768px) {
+        #boxes .box {
+          flex-basis: 45%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Bitcoin</span> Private Key Challenge</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="#addressToFind">Play</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#about">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <h2>Welcome to the Bitcoin Private Key Challenge</h2>
+      <p>
+        This unique and educational experience delves into the world of
+        cryptography and the security of Bitcoin!
+      </p>
+      <h3>What's This About?</h3>
+      <p>
+        Your mission, should you choose to accept it, is to try and find the
+        private key that unlocks this address. It's a journey into the heart of
+        cryptographic security - a real-world application of mathematics and
+        probability.
+      </p>
+      <h3>Understanding the Odds</h3>
+      <p>
+        The Bitcoin network uses cryptographic keys that are 256 bits long,
+        meaning there are 2<sup>256</sup> possible combinations. That's a number
+        so large it's hard to comprehend. Imagine trying to find one specific
+        grain of sand out of all the grains on all the beaches on Earth, and you
+        start to get close to how challenging this is.
+      </p>
+      <p>
+        Every attempt to guess the key is like buying a single lottery ticket
+        for a draw with trillions upon trillions of possible numbers. The odds
+        of success are nearly zero, but the challenge is in the attempt.
+      </p>
+      <h3 id="about">Why Participate?</h3>
+      <ul>
+        <li>
+          <strong>Educational Fun:</strong> This challenge is designed to be a
+          fun, educational foray into the world of cryptography.
+        </li>
+        <li>
+          <strong>No Cost, Just Experiment:</strong> Participation is completely
+          free. There's no entry fee, and you're not wagering anything except
+          your time and computational effort.
+        </li>
+        <li>
+          <strong>Remember the Ethos:</strong> This is a demonstration of the
+          security of cryptographic systems.
+        </li>
+      </ul>
+      <h3>Disclaimer and Ethics</h3>
+      <p>
+        This challenge is for educational purposes only. It's not a promise of
+        reward, as the likelihood of success is infinitesimally small.
+      </p>
+      <p>
+        Please be aware of your computing resource usage. We encourage
+        responsible and ethical participation.
+      </p>
+      <!-- change address input and submit-->
+      <p id="trial"></p>
+      <p id="result"></p>
+      <p id="addressToFind"></p>
+      <button id="playBtn" onclick="generateKeyPair()">Try Your Luck</button>
+      <p id="address">Generated Address:</p>
+      <p id="privateKey">Generated Private Key:</p>
+      <p id="publicKey">Generated Public Key:</p>
+      <div id="changeAddress">
+        <h3>Change Search Address</h3>
+        <p>Enter an address to search for the private key</p>
+        <input
+          id="newAddress"
+          type="text"
+          placeholder="1MwpeAHcfjYkWpMhByaGbXdtPjT3NYB14K"
+        />
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+    <script>
+      let tryCount = 1;
+      const playBtn = document.getElementById("playBtn");
+      function generateKeyPair() {
+        let modulus = tryCount % 10;
+        // change playbtn background color depending on modulus
+        if (modulus === 0) {
+          playBtn.style.backgroundColor = "red";
+          playBtn.style.color = "white";
+        } else if (modulus === 1) {
+          playBtn.style.backgroundColor = "blue";
+          playBtn.style.color = "white";
+        } else if (modulus === 2) {
+          playBtn.style.backgroundColor = "green";
+          playBtn.style.color = "white";
+        } else if (modulus === 3) {
+          playBtn.style.backgroundColor = "yellow";
+          playBtn.style.color = "black";
+        } else if (modulus === 4) {
+          playBtn.style.backgroundColor = "orange";
+          playBtn.style.color = "white";
+        } else if (modulus === 5) {
+          playBtn.style.backgroundColor = "purple";
+          playBtn.style.color = "white";
+        } else if (modulus === 6) {
+          playBtn.style.backgroundColor = "pink";
+          playBtn.style.color = "white";
+        } else if (modulus === 7) {
+          playBtn.style.backgroundColor = "brown";
+          playBtn.style.color = "white";
+        } else if (modulus === 8) {
+          playBtn.style.backgroundColor = "black";
+          playBtn.style.color = "white";
+        } else if (modulus === 9) {
+          playBtn.style.backgroundColor = "white";
+          playBtn.style.color = "black";
+        }
+        // Generate a Bitcoin SV key pair
+        var privateKey = bsv.PrivateKey.fromRandom();
+        var publicKey = privateKey.publicKey;
+        var address = publicKey.toAddress().toString();
+        // Display the keys and address to the user
+        document.getElementById("privateKey").textContent =
+          "Generated Private Key: " + privateKey.toString();
+        document.getElementById("publicKey").textContent =
+          "Generated Public Key: " + publicKey.toString();
+        document.getElementById("address").textContent =
+          "Generated Address: " + address;
+        document.getElementById("trial").textContent = "Trial: " + tryCount++;
+        if (address === targetAddress) {
+          alert("Congratulations! You've found the matching key pair!");
+          localStorage.setItem("privateKey", privateKey.toString());
+          document.getElementById(
+            "result"
+          ).innerHTML = `Congratulations! You've found the matching key pair! We have saved the private key to your local storage.`;
+        } else {
+          document.getElementById(
+            "result"
+          ).innerHTML = `Not a match. Try again!`;
+          tryCount++;
+        }
+      }
+      // Check if the generated address matches the target address
+      var targetAddress = "1MwpeAHcfjYkWpMhByaGbXdtPjT3NYB14K"; // Replace with your actual target address
+      document.getElementById("addressToFind").textContent =
+        "Address to find: " + targetAddress;
+      //change address input and submit
+      const newAddress = document.getElementById("newAddress");
+      const submit = document.getElementById("submit");
+      submit.addEventListener("click", () => {
+        const address = newAddress.value;
+        document.getElementById("addressToFind").textContent =
+          "Address to find: " + address;
+      });
+      playBtn.focus();
+      //addevnt listener for enter key
+      newAddress.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          playBtn.click();
+        }
+      });
+    </script>
+  </body>
+</html>
