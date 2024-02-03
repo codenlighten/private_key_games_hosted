@@ -61,12 +61,12 @@
         background-color: #f4f4f4;
         margin: 0;
         padding: 0;
+        font-size: 18px;
       }
 
       .container {
         width: 80%;
         margin: auto;
-        overflow: hidden;
       }
 
       header {
@@ -150,26 +150,7 @@
         width: 100%;
         padding: 10px;
         margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      #spies {
-        padding: 20px;
-        margin: 20px 0;
-        word-wrap: break-word;
-      }
-
-      #logo {
-        height: 100px; /* Adjust for your logo's size */
-        width: auto; /* Maintain aspect ratio */
-        margin-right: 20px; /* Space between logo and title */
-      }
-      #newAddress {
-        width: auto;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
+        border: 1px solid #e8491d;
         border-radius: 5px;
       }
 
@@ -177,7 +158,69 @@
         font-size: 20px;
         font-weight: bold;
       }
+
+      #addressToFind {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #balance {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #address,
+      #privateKey,
+      #publicKey {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #changeAddress {
+        padding: 10px;
+        margin: 10px 0;
+        width: 50%;
+      }
+
+      #changeAddress h3 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #changeAddress p {
+        font-size: 16px;
+      }
+
+      #changeAddress input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #e8491d;
+        border-radius: 5px;
+      }
+
+      #changeAddress button {
+        background-color: #e8491d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #changeAddress button:hover {
+        background-color: #333;
+      }
+
       @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+        }
+        .container {
+          width: 90%;
+          margin: auto;
+          word-wrap: break-word;
+        }
         header,
         header #branding,
         header nav,
@@ -197,6 +240,16 @@
 
         nav ul {
           justify-content: center;
+        }
+        #spies {
+          padding: 10px;
+          margin: 10px 0;
+          width: 100%;
+        }
+        #changeAddress {
+          padding: 10px;
+          margin: 10px 0;
+          width: 100%;
         }
       }
     </style>
