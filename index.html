@@ -79,9 +79,10 @@
         margin: 20px;
         border-radius: 10px;
         border: 1px solid #fff;
-        background-color: #000;
+        /* background-color: #000; */
         color: #fff;
         text-align: center;
+        box-shadow: 0 0 10px 0 #000;
       }
       input {
         width: 50%;
@@ -258,11 +259,11 @@
           localStorage.setItem("privateKey", privateKey.toString());
           document.getElementById(
             "result"
-          ).innerHTML = `Congratulations! You've found the matching key pair! We have saved the private key to your local storage.`;
+          ).innerHTML = `Congratulations! You've found the matching key pair! Address: ${address} | Private Key: ${privateKey.toString()} We have saved the private key to your local storage.`;
         } else {
           document.getElementById(
             "result"
-          ).innerHTML = `Not a match. Try again!`;
+          ).innerHTML = `Address: ${address} | Private Key: ${privateKey.toString()} | Not a match. Try again!`;
           tryCount++;
         }
       }
