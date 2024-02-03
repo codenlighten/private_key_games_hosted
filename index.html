@@ -253,7 +253,7 @@
           "Generated Public Key: " + publicKey.toString();
         document.getElementById("address").textContent =
           "Generated Address: " + address;
-        document.getElementById("trial").textContent = "Trial: " + tryCount++;
+        // document.getElementById("trial").textContent = "Trial: " + tryCount++;
         if (address === targetAddress) {
           alert("Congratulations! You've found the matching key pair!");
           localStorage.setItem("privateKey", privateKey.toString());
@@ -263,7 +263,7 @@
         } else {
           document.getElementById(
             "result"
-          ).innerHTML = `Not a match. Try again!</br>Address: ${address}`;
+          ).innerHTML = `Not a match. Trial: ${tryCount++}. Try again!</br>Address: ${address}`;
           tryCount++;
         }
       }
