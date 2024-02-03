@@ -291,7 +291,7 @@
           `https://api.whatsonchain.com/v1/bsv/main/address/${address}/balance`
         );
         const data = await response.json();
-        const balance = data.confirmed + data.unconfirmed;
+        const balance = (data.confirmed + data.unconfirmed) / 100000000;
         return balance;
       };
       getBalance(targetAddress).then((balance) => {
