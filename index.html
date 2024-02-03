@@ -166,6 +166,13 @@
         border-radius: 5px;
       }
 
+      #spies {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
       /* media max */
       @media (max-width: 768px) {
         header #branding,
@@ -255,24 +262,26 @@
         Please be aware of your computing resource usage. We encourage
         responsible and ethical participation.
       </p>
-      <!-- change address input and submit-->
-      <!-- <p id="trial"></p> -->
-      <p id="result">Your Result:</p>
-      <p id="addressToFind"></p>
-      <p id="balance"></p>
-      <button id="playBtn" onclick="generateKeyPair()">Try Your Luck</button>
-      <p id="address">Generated Address:</p>
-      <p id="privateKey">Generated Private Key:</p>
-      <p id="publicKey">Generated Public Key:</p>
-      <div id="changeAddress">
-        <h3>Change Search Address</h3>
-        <p>Enter an address to search for the private key</p>
-        <input
-          id="newAddress"
-          type="text"
-          placeholder="1MwpeAHcfjYkWpMhByaGbXdtPjT3NYB14K"
-        />
-        <button id="submit">Submit</button>
+      <div id="spies">
+        <!-- change address input and submit-->
+        <!-- <p id="trial"></p> -->
+        <p id="result">Your Result:</p>
+        <p id="addressToFind"></p>
+        <p id="balance"></p>
+        <button id="playBtn" onclick="generateKeyPair()">Try Your Luck</button>
+        <p id="address">Generated Address:</p>
+        <p id="privateKey">Generated Private Key:</p>
+        <p id="publicKey">Generated Public Key:</p>
+        <div id="changeAddress">
+          <h3>Change Search Address</h3>
+          <p>Enter an address to search for the private key</p>
+          <input
+            id="newAddress"
+            type="text"
+            placeholder="1MwpeAHcfjYkWpMhByaGbXdtPjT3NYB14K"
+          />
+          <button id="submit">Submit</button>
+        </div>
       </div>
     </div>
     <script>
