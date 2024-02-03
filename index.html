@@ -67,6 +67,7 @@
       .container {
         width: 80%;
         margin: auto;
+        word-wrap: break-word;
       }
 
       header {
@@ -213,43 +214,21 @@
       }
 
       @media (max-width: 768px) {
-        body {
-          font-size: 16px;
-        }
-        .container {
-          width: 90%;
-          margin: auto;
-          word-wrap: break-word;
-        }
-        header,
-        header #branding,
-        header nav,
-        header nav ul,
-        header nav ul li,
-        #spies,
-        #logo {
-          float: none;
-          display: block;
-          text-align: center;
-          margin-bottom: 10px; /* Adjust spacing for mobile */
+        header {
+          flex-direction: column;
+          align-items: flex-start;
         }
 
-        #logo {
-          height: 60px; /* Adjust for mobile */
+        header ul {
+          margin-top: 20px;
         }
 
-        nav ul {
-          justify-content: center;
+        header li {
+          padding: 0;
         }
-        #spies {
-          padding: 10px;
-          margin: 10px 0;
-          width: 100%;
-        }
-        #changeAddress {
-          padding: 10px;
-          margin: 10px 0;
-          width: 100%;
+
+        header a {
+          padding: 10px 0;
         }
       }
     </style>
