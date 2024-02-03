@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- meta title , keywords, twitter, facebook-->
-
+    <link rel="icon" href="logo.png" type="image/png" sizes="16x16" />
     <meta
       name="description"
       content="Address Games - The Bitcoin Private Key Challenge"
@@ -14,9 +13,25 @@
       content="Bitcoin, Bitcoin SV, BSV, Cryptography, Private Key, Public Key, Address, Challenge, Game, Educational, Security, Cryptocurrency"
     />
     <meta name="author" content="codenlighten" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta
+      name="google"
+      content="nositelinkssearchbox, notranslate, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@codenlighten1" />
     <meta name="twitter:creator" content="@codenlighten1" />
+    <meta
+      name="twitter:title"
+      content="Address Games - The Bitcoin Private Key Challenge"
+    />
+    <meta
+      name="twitter:description"
+      content="Address Games - The Bitcoin Private Key Challenge"
+    />
+    <meta name="twitter:image" content="https://addressgame.com/logo.png" />
+    <meta name="twitter:image:alt" content="Address Games Logo" />
     <meta property="og:url" content="https://addressgame.com" />
     <meta
       property="og:title"
@@ -32,71 +47,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Address Games" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:locale:alternate" content="en_GB" />
-    <meta property="og:locale:alternate" content="es_ES" />
-    <meta property="og:locale:alternate" content="fr_FR" />
-    <meta property="og:locale:alternate" content="de_DE" />
-    <meta property="og:locale:alternate" content="it_IT" />
-    <meta property="og:locale:alternate" content="nl_NL" />
-    <meta property="og:locale:alternate" content="ja_JP" />
-    <meta property="og:locale:alternate" content="ko_KR" />
-    <meta property="og:locale:alternate" content="zh_CN" />
-    <meta property="og:locale:alternate" content="zh_TW" />
-    <meta property="og:locale:alternate" content="pt_BR" />
-    <meta property="og:locale:alternate" content="pt_PT" />
-
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="google" content="nositelinkssearchbox" />
-    <meta name="google" content="notranslate" />
-    <meta name="google" content="nositelinkssearchbox" />
-    <meta name="google" content="max-snippet:-1" />
-    <meta name="google" content="max-image-preview:large" />
-    <meta name="google" content="max-video-preview:-1" />
-    <meta name="google" content="max-video-preview:-1" />
-    <meta name="google" content="max-snippet:-1" />
-    <meta name="google" content="max-image-preview:large" />
-    <meta name="google" content="max-video-preview:-1" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@codenlighten1" />
-    <meta name="twitter:creator" content="@codenlighten1" />
-    <meta
-      name="twitter:title"
-      content="Address Games - The Bitcoin Private Key Challenge"
-    />
-    <meta
-      name="twitter:description"
-      content="Address Games - The Bitcoin Private Key Challenge"
-    />
-    <meta name="twitter:image" content="https://addressgame.com/logo.png" />
-    <meta
-      name="twitter:image:alt"
-      content="Address Games - The Bitcoin Private Key Challenge"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@codenlighten1" />
-    <meta name="twitter:creator" content="@codenlighten1" />
-    <meta
-      name="twitter:title"
-      content="Address Games - The Bitcoin Private Key Challenge"
-    />
-    <meta
-      name="twitter:description"
-      content="Address Games - The Bitcoin Private Key Challenge"
-    />
-    <meta name="twitter:image" content="https://addressgame.com/logo.png" />
-    <meta
-      name="twitter:image:alt"
-      content="Address Games - The Bitcoin Private Key Challenge"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@codenlighten1" />
-    <meta name="twitter:creator" content="@codenlighten1" />
-    <meta
-      name="twitter:title"
-      content="Address Games - The Bitcoin Private Key Challenge"
-    />
+    <!-- Include og:locale:alternate only if you have specific translated versions of the page -->
 
     <title>Address Games - The Bitcoin Private Key Challenge</title>
     <script src="https://unpkg.com/bsv@1.5"></script>
@@ -108,151 +59,91 @@
         margin: 0;
         padding: 0;
       }
+
       .container {
         width: 80%;
         margin: auto;
         overflow: hidden;
       }
+
       header {
-        background: #333;
+        background: #000;
         color: #fff;
         padding-top: 30px;
         min-height: 70px;
-        border-bottom: #e8491d 3px solid;
+        border-bottom: 3px solid #e8491d;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
+
+      #branding {
+        display: flex;
+        align-items: center;
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
       header ul {
+        list-style: none;
         padding: 0;
         margin: 0;
-        list-style: none;
+        display: flex;
       }
+
       header li {
-        float: left;
-        display: inline;
-        padding: 0 20px 0 20px;
+        padding: 0 20px;
       }
-      header #branding {
-        float: left;
-      }
-      header #branding h1 {
-        margin: 0;
-      }
-      header nav {
-        float: right;
-        margin-top: 10px;
-      }
-      header .highlight,
-      header .current a {
-        color: #e8491d;
-        font-weight: bold;
-      }
+
       header a {
         color: #fff;
         text-decoration: none;
         text-transform: uppercase;
         font-size: 16px;
       }
+
+      header .highlight,
+      header .current a,
+      footer a:hover,
       header a:hover {
         color: #e8491d;
+        font-weight: bold;
       }
-      .highlight {
-        color: #e8491d;
-      }
+
       footer {
         padding: 20px;
         margin-top: 20px;
-        color: #fff;
         background-color: #333;
+        color: #fff;
         text-align: center;
       }
-      footer p {
-        margin: 0;
-      }
+
+      footer p,
       footer a {
+        margin: 0;
         color: #fff;
         text-decoration: none;
       }
-      footer a:hover {
-        color: #e8491d;
-      }
-      .container {
-        width: 80%;
-        margin: auto;
-        overflow: hidden;
-      }
-      h1 {
-        margin: 40px 0;
-      }
-      h2 {
-        margin: 20px 0;
-      }
-      h3 {
-        margin: 10px 0;
-      }
-      p {
-        margin: 10px 0;
-      }
-      ul {
-        margin: 10px 0;
-      }
-      #result {
-        margin: 10px;
-        font-weight: bold;
-      }
-      #addressToFind {
-        margin: 10px;
-        font-weight: bold;
-      }
-      #balance {
-        margin: 10px;
-      }
-      #playBtn {
-        margin: 10px;
-      }
-      #address {
-        margin: 10px;
-      }
-      #privateKey {
-        margin: 10px;
-      }
-      #publicKey {
-        margin: 10px;
-      }
-      #changeAddress {
-        margin: 10px;
-      }
-      #newAddress {
-        margin: 10px;
-      }
+
+      #playBtn,
       #submit {
-        margin: 10px;
+        background-color: #e8491d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
       }
 
-      /* button */
-      #playBtn {
-        background-color: #e8491d;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      #playBtn:hover {
-        background-color: #333;
-      }
-      #submit {
-        background-color: #e8491d;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
+      #playBtn:hover,
       #submit:hover {
         background-color: #333;
       }
 
-      /* input */
-      #newAddress {
+      #newAddress,
+      #spies {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -261,38 +152,44 @@
       }
 
       #spies {
-        border: 1px solid #ccc;
-        border-radius: 5px;
         padding: 20px;
         margin: 20px 0;
         word-wrap: break-word;
       }
 
       #logo {
-        width: 100px;
-        height: auto;
-        float: left;
+        height: 100px; /* Adjust for your logo's size */
+        width: auto; /* Maintain aspect ratio */
+        margin-right: 20px; /* Space between logo and title */
+      }
+      #newAddress {
+        width: auto;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
       }
 
-      /* media max */
       @media (max-width: 768px) {
+        header,
         header #branding,
         header nav,
         header nav ul,
-        header nav ul {
+        header nav ul li,
+        #spies,
+        #logo {
           float: none;
           display: block;
           text-align: center;
+          margin-bottom: 10px; /* Adjust spacing for mobile */
         }
-        header nav ul {
-          margin: 0;
-          padding: 0;
+
+        #logo {
+          height: 60px; /* Adjust for mobile */
         }
-        header nav ul li {
-          margin-bottom: 10px;
-        }
-        #spies {
-          padding: 10px;
+
+        nav ul {
+          justify-content: center;
         }
       }
     </style>
