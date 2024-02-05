@@ -35,7 +35,7 @@ app.get("/api/attempts", async (req, res) => {
   if (attempts.length === 0) {
     await getAttemptsMongo();
   }
-  const number = attempts.length;
+  const number = attempts.length || 0;
   res.json({ number, attempts });
 });
 
