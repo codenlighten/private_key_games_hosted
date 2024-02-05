@@ -13,10 +13,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 let attempts = [];
-
+let totalAttempts = 0;
 //get attempts
 const getAttemptsMongo = async () => {
   attempts = await getAttempts();
+  totalAttempts = attempts.length;
 };
 
 // index.html
@@ -29,6 +30,7 @@ app.post("/api/attempt", async (req, res) => {
   const attempt = { address, guess };
   await addAttempt(attempt);
   attempts.push(attempt);
+  totalAttempts++;
   res.json({ message: "Attempt added" });
 });
 
