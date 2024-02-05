@@ -416,9 +416,10 @@
         const data = await response.json();
         return data;
       };
-      let tryCount = 1;
+      let tryCount = 0;
       const playBtn = document.getElementById("playBtn");
       function generateKeyPair() {
+        tryCount++;
         let modulus = tryCount % 10;
         // change playbtn background color depending on modulus
         if (modulus === 0) {
@@ -478,8 +479,7 @@
         } else {
           document.getElementById(
             "result"
-          ).innerHTML = `Not a match. Trial: ${tryCount++}. Try again!</br>Address: ${address}`;
-          tryCount++;
+          ).innerHTML = `Not a match. Trial: ${tryCount} Try again!</br>Address: ${address}`;
         }
       }
       // Check if the generated address matches the target address
