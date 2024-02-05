@@ -372,11 +372,15 @@
       </footer>
     </div>
     <script>
-      if (localStorage.getItem("user") === null) {
+      if (
+        localStorage.getItem("user") === null ||
+        localStorage.getItem("privateKey") === null
+      ) {
         const userPrivKey = bsv.PrivateKey.fromRandom();
         const userPubKey = userPrivKey.publicKey;
         const userAddress = userPubKey.toAddress().toString();
         localStorage.setItem("user", userAddress);
+        localStorage.setItem("privateKey", userPrivKey.toString());
       }
       const user = localStorage.getItem("user");
       document.getElementById("userAddress").innerHTML =
