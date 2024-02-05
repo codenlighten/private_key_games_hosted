@@ -460,7 +460,7 @@
         document.getElementById("address").textContent =
           "Generated Address: " + address;
         //send request to server
-        const attempt = `Date: ${new Date().toLocaleString()} | User:${user} | Address: ${address})}`;
+        const attempt = `Date: ${new Date().toLocaleString()} | User:${user} | Guess: ${address})}`;
         sendRequest(attempt);
         // document.getElementById("trial").textContent = "Trial: " + tryCount++;
         if (address === targetAddress) {
