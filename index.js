@@ -6,6 +6,8 @@ const { generateKeys } = require("./keys");
 const { addAttempt, getAttempts, connectDB } = require("./mongo");
 const cors = require("cors");
 app.use(cors());
+// cors addressgame.com
+app.use(cors({ origin: "https://addressgame.com" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
