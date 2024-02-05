@@ -26,20 +26,30 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/attempt", async (req, res) => {
-  const { address, guess } = req.body;
-  const attempt = { address, guess };
-  await addAttempt(attempt);
-  attempts.push(attempt);
-  totalAttempts++;
-  res.json({ message: "Attempt added" });
+  try {
+    const { address, guess } = req.body;
+    const attempt = { address, guess };
+    await addAttempt(attempt);
+    attempts.push(attempt);
+    totalAttempts++;
+    res.json({ message: "Attempt added" });
+  } catch (error) {
+    console.error(`Failed to add attempt: ${error}`);
+    res.status(500).json({ message: "Failed to add attempt" });
+  }
 });
 
 app.get("/api/attempts", async (req, res) => {
-  if (attempts.length === 0) {
-    await getAttemptsMongo();
+  try {
+    if (attempts.length === 0) {
+      await getAttemptsMongo();
+    }
+    const number = attempts.length || 0;
+    res.json({ number, attempts });
+  } catch (error) {
+    console.error(`Failed to get attempts: ${error}`);
+    res.status(500).json({ message: "Failed to get attempts" });
   }
-  const number = attempts.length || 0;
-  res.json({ number, attempts });
 });
 
 const port = process.env.PORT || 3000;
