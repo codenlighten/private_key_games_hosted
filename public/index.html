@@ -256,8 +256,9 @@
 
     <div class="container">
       <h2>Welcome to The Bitcoin Address Game & Private Key Challenge</h2>
-      <p id="userAddress"></p>
+      <p id="todaysDate"></p>
       <p id="numAttemptsTotal"></p>
+      <p id="userAddress"></p>
       <p>
         This unique and educational experience delves into the world of
         cryptography and the security of Bitcoin!
@@ -358,9 +359,12 @@
       };
       numAttemptsOverall().then((number) => {
         document.getElementById("numAttemptsTotal").textContent =
-          "Total Attempts: " + number;
+          "Number of Worldwide Attempts: " + number;
       });
-
+      //date and local time
+      const todaysDate = new Date().toLocaleString();
+      document.getElementById("todaysDate").textContent =
+        "Today's Date: " + todaysDate;
       const sendRequest = async (attempt) => {
         const response = await fetch("/api/attempt", {
           method: "POST",
