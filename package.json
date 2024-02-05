@@ -8,5 +8,20 @@
     "mongodb": "^6.3.0",
     "node-fetch": "^2.7.0",
     "uuid": "^9.0.1"
-  }
+  },
+  "name": "private_key_games_hosted",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "20.11.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
