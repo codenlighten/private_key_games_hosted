@@ -379,12 +379,15 @@
         const userPrivKey = bsv.PrivateKey.fromRandom();
         const userPubKey = userPrivKey.publicKey;
         const userAddress = userPubKey.toAddress().toString();
-        localStorage.setItem("user", userAddress);
-        localStorage.setItem("privateKey", userPrivKey.toString());
+        const user = {
+          address: userAddress,
+          privateKey: userPrivKey.toString(),
+        };
+        localStorage.setItem("userkeys", JSON.stringify(user));
       }
-      const user = localStorage.getItem("user");
+      const user = JSON.parse(localStorage.getItem("userkeys"));
       document.getElementById("userAddress").innerHTML =
-        "Your Address: " + user;
+        "Your Address: " + user.address;
 
       const numAttemptsOverall = async () => {
         const response = await fetch("/api/attempts", {
@@ -411,7 +414,7 @@
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ address: user, guess: attempt }),
+          body: JSON.stringify({ address: user.address, guess: attempt }),
         });
         const data = await response.json();
         return data;
@@ -464,7 +467,9 @@
         document.getElementById("address").textContent =
           "Generated Address: " + address;
         //send request to server
-        const attempt = `Date: ${new Date().toLocaleString()} | User:${user} | Guess: ${address})}`;
+        const attempt = `Date: ${new Date().toLocaleString()} | User:${
+          user.address
+        } | Guess: ${address})}`;
         sendRequest(attempt);
         // document.getElementById("trial").textContent = "Trial: " + tryCount++;
         if (address === targetAddress) {
